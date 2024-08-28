@@ -12,8 +12,8 @@ export class PessoasService {
 
   constructor(private http: HttpClient) {}
 
-  listarTodos(): Observable<Content> {
-    return this.http.get<Content>(environment.API_URL + '/pessoas');
+  listarTodos(): Observable<Pessoas[]> {
+    return this.http.get<Pessoas[]>(environment.API_URL + '/pessoas');
   }
 
   salvar(pessoa: Pessoas): Observable<Pessoas> {
@@ -28,8 +28,8 @@ export class PessoasService {
     return this.http.delete<any>(environment.API_URL + `/pessoas/${idPessoa}`);
   }
 
-  listarPessoasFiltroPorNome(nome: string): Observable<Content> {
-    return this.http.get<Content>(environment.API_URL + `/pessoas?nome=${nome}`);
+  listarPessoasFiltroPorNome(nome: string): Observable<Pessoas[]> {
+    return this.http.get<Pessoas[]>(environment.API_URL + `/pessoas?nome=${nome}`);
   }
 
 }

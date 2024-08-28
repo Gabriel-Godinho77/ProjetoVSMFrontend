@@ -1,33 +1,31 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PoMenuItem } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-home-principal',
   templateUrl: './home-principal.component.html',
   styleUrls: ['./home-principal.component.css']
 })
-export class HomePrincipalComponent implements OnInit, AfterViewInit {
+export class HomePrincipalComponent implements OnInit {
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void {
-    const goToCitiesLink = document.getElementById('goToCities') as HTMLAnchorElement;
-    const goToPeopleLink = document.getElementById('goToPeoples') as HTMLAnchorElement;
+  readonly menus: Array<PoMenuItem> = [
 
-    if (goToCitiesLink) {
-      goToCitiesLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        this.router.navigate(['/cidades']);
-      });
-    }
-     if (goToPeopleLink) {
-      goToPeopleLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        this.router.navigate(['/pessoas']);
-      });
-    }
+    { label: 'Pessoas', action: this.navegarPessoas.bind(this), icon: 'po-icon-device-desktop'  },
+    { label: 'Cidades', action: this.navegarCidades.bind(this), icon: 'po-icon-device-desktop'  }
+  ];
+
+
+  private navegarPessoas(){
+    this.router.navigateByUrl('/pessoas')
+  }
+
+  private navegarCidades(){
+    this.router.navigateByUrl('/cidades')
   }
 }

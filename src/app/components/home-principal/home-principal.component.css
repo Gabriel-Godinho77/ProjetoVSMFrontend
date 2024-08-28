@@ -1,0 +1,13 @@
+.modern-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #9c0082;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(90deg, #f0f0f0, #e0e0e0);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+

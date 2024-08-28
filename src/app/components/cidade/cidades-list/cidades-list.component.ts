@@ -206,5 +206,6 @@ export class CidadesListComponent implements OnInit {
 
   limparForm(): void {
     this.form.get('nome')?.setValue(null);
+
   }
 }

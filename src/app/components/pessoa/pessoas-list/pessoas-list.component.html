@@ -19,7 +19,12 @@
       <po-input class="po-md-2" formControlName="numero" p-label="Número"> </po-input>
       <po-input class="po-md-4" formControlName="bairro" p-label="Bairro"> </po-input>
       <po-input class="po-md-4" formControlName="cep" p-label="CEP"> </po-input>
-      <po-input class="po-md-4" formControlName="cidade" p-label="Cidade"> </po-input>
+      <po-select
+          name="cidadeId"
+          p-label="Cidade"
+          [p-options]="optionsGroupList"
+          formControlName="cidadeId">
+      </po-select>
       <po-input class="po-md-2" formControlName="uf" p-label="UF"> </po-input>
       <po-input class="po-md-6" formControlName="telefone" p-label="Telefone"> </po-input>
       <po-input class="po-md-6" formControlName="email" p-label="E-mail"> </po-input>
@@ -37,7 +42,12 @@
       <po-input class="po-md-2" formControlName="numero" p-label="Número"> </po-input>
       <po-input class="po-md-4" formControlName="bairro" p-label="Bairro"> </po-input>
       <po-input class="po-md-4" formControlName="cep" p-label="CEP"> </po-input>
-      <po-input class="po-md-4" formControlName="cidade" p-label="Cidade"> </po-input>
+      <po-select
+          name="cidadeId"
+          p-label="Cidade"
+          [p-options]="optionsGroupList"
+          formControlName="cidadeId">
+      </po-select>
       <po-input class="po-md-2" formControlName="uf" p-label="UF"> </po-input>
       <po-input class="po-md-6" formControlName="telefone" p-label="Telefone"> </po-input>
       <po-input class="po-md-6" formControlName="email" p-label="E-mail"> </po-input>

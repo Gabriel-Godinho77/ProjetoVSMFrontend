@@ -1,32 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Home</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <h1>Bem-vindo à Página Inicial</h1>
-    <p>Você está na página inicial. Para ver as cidades ou as pessoas, clique em um dos links abaixo:</p>
-    <a id="goToCities" href="#">Ir para a Página de Cidades</a>
-    <br>
-    <br>
-    <a id="goToPeoples" href="#">Ir para a Página de Pessoas</a>
+<div class="po-wrapper">
 
-    <script src="home.js"></script>
-</body>
-</html>
+
+  <po-menu [p-menus]="menus"></po-menu>
+
+  <po-page-default p-title="Seja Bem-vindo ao menu de Cadastros!">
+
+
+    <h1 class="modern-title">Para gerenciar suas Pessoas acesse a opção Pessoas no menu ao lado</h1>
+    <br>
+    <br>
+
+    <h1 class="modern-title">Para gerenciar suas Cidades acesse a opção Cidades no menu ao lado</h1>
+
+  </po-page-default>
+
+</div>
 

@@ -1,0 +1,35 @@
+<po-page-dynamic-search p-title="Cidades"
+[p-breadcrumb]="breadcrump"
+(p-quick-search)="onQuickSearch($event)"
+(p-change-disclaimers)="onQuickSearch($event)">
+  <div class="po-pb-2">
+    <div class="po-mb-1">
+      <po-button p-label="Nova Cidade" (p-click)="novaCidade()" p-icon="add"></po-button>
+    </div>
+    <po-table p-container="shadow" [p-columns]="columns" [p-items]="items" [p-actions]="actionsTable"></po-table>
+  </div>
+</po-page-dynamic-search>
+
+<po-modal #modalSalvarCidade p-title="Nova Cidade" [p-primary-action]="salvarCadastro" [p-secondary-action]="cancelarCadastro">
+  <form [formGroup]="form">
+    <div class="po-row">
+      <po-input class="po-md-6" formControlName="nome" name = "nome" p-label="Cidade"> </po-input>
+    </div>
+  </form>
+</po-modal>
+
+<po-modal #modalEdicaoCidade p-title="Editar Cidade" [p-primary-action]="editarCadastroCidade" [p-secondary-action]="cancelarCadastroCidade">
+  <form [formGroup]="form">
+    <div class="po-row">
+      <po-input class="po-md-6" formControlName="nome" p-label="Nome"> </po-input>
+    </div>
+  </form>
+</po-modal>
+
+<po-modal #modalExcluirCidade p-title="Excluir Cidade" [p-primary-action]="excluirCadastroCidade" [p-secondary-action]="cancelarExclusaoCidade">
+  <form [formGroup]="form">
+    <div class="po-row">
+      <p>Deseja excluir a cidade {{cidade.nome}}?</p>
+    </div>
+  </form>
+</po-modal>

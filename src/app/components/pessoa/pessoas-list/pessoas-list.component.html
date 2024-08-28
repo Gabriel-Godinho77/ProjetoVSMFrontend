@@ -1,0 +1,55 @@
+<po-page-dynamic-search p-title="Pessoas"
+  [p-breadcrumb]="breadcrump"
+  (p-quick-search)="onQuickSearch($event)"
+  (p-change-disclaimers)="onQuickSearch($event)">
+  <div class="po-pb-2">
+    <div class="po-mb-1">
+      <po-button p-label="Nova Pessoa" (p-click)="novaPessoa()" p-icon="add"></po-button>
+    </div>
+    <po-table p-container="shadow" [p-columns]="columns" [p-items]="items" [p-actions]="actionsTable"></po-table>
+  </div>
+</po-page-dynamic-search>
+
+<po-modal #modalSalvarPessoa p-title="Nova Pessoa" [p-primary-action]="salvarCadastro" [p-secondary-action]="cancelarCadastro">
+  <form [formGroup]="form">
+    <div class="po-row">
+      <po-input class="po-md-6" formControlName="nome" p-label="Nome"> </po-input>
+      <po-input class="po-md-6" formControlName="cpforcnpj" p-label="CPF/CNPJ"> </po-input>
+      <po-input class="po-md-6" formControlName="endereco" p-label="Endereço"> </po-input>
+      <po-input class="po-md-2" formControlName="numero" p-label="Número"> </po-input>
+      <po-input class="po-md-4" formControlName="bairro" p-label="Bairro"> </po-input>
+      <po-input class="po-md-4" formControlName="cep" p-label="CEP"> </po-input>
+      <po-input class="po-md-4" formControlName="cidade" p-label="Cidade"> </po-input>
+      <po-input class="po-md-2" formControlName="uf" p-label="UF"> </po-input>
+      <po-input class="po-md-6" formControlName="telefone" p-label="Telefone"> </po-input>
+      <po-input class="po-md-6" formControlName="email" p-label="E-mail"> </po-input>
+    </div>
+  </form>
+</po-modal>
+
+<po-modal #modalEdicaoPessoa p-title="Editar Pessoa" [p-primary-action]="editarCadastroPessoa" [p-secondary-action]="cancelarCadastroPessoa">
+  <form [formGroup]="form">
+    <div class="po-row">
+      <po-input class="po-md-1" formControlName="id" p-label="ID" p-disabled> </po-input>
+      <po-input class="po-md-6" formControlName="nome" p-label="Nome"> </po-input>
+      <po-input class="po-md-6" formControlName="cpforcnpj" p-label="CPF/CNPJ"> </po-input>
+      <po-input class="po-md-6" formControlName="endereco" p-label="Endereço"> </po-input>
+      <po-input class="po-md-2" formControlName="numero" p-label="Número"> </po-input>
+      <po-input class="po-md-4" formControlName="bairro" p-label="Bairro"> </po-input>
+      <po-input class="po-md-4" formControlName="cep" p-label="CEP"> </po-input>
+      <po-input class="po-md-4" formControlName="cidade" p-label="Cidade"> </po-input>
+      <po-input class="po-md-2" formControlName="uf" p-label="UF"> </po-input>
+      <po-input class="po-md-6" formControlName="telefone" p-label="Telefone"> </po-input>
+      <po-input class="po-md-6" formControlName="email" p-label="E-mail"> </po-input>
+    </div>
+  </form>
+</po-modal>
+
+<po-modal #modalExcluirPessoa p-title="Excluir Pessoa" [p-primary-action]="excluirCadastroPessoa" [p-secondary-action]="cancelarExclusaoPessoa">
+  <form [formGroup]="form">
+    <div class="po-row">
+      <p>Deseja excluir a pessoa {{pessoa.nome}}?</p>
+    </div>
+  </form>
+</po-modal>
+

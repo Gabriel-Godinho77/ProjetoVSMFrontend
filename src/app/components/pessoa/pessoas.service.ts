@@ -1,5 +1,5 @@
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -29,7 +29,8 @@ export class PessoasService {
   }
 
   listarPessoasFiltroPorNome(nome: string): Observable<Pessoas[]> {
-    return this.http.get<Pessoas[]>(environment.API_URL + `/pessoas?nome=${nome}`);
+    // Construa a URL com o parâmetro de consulta
+    const params = new HttpParams().set('nome', nome);
+    return this.http.get<Pessoas[]>(`${environment.API_URL}/pessoas`, { params });
   }
-
 }

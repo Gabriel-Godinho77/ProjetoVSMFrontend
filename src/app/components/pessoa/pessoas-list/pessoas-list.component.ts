@@ -93,7 +93,7 @@ export class PessoasListComponent implements OnInit {
     { property: 'numero', label: 'Número', type: 'string' },
     { property: 'bairro', label: 'Bairro', type: 'string' },
     { property: 'cep', label: 'CEP', type: 'string' },
-    { property: 'cidadeNome', label: 'Cidade', type: 'string' }, // Alterado para cidadeNome
+    { property: 'cidadeNome', label: 'Cidade', type: 'string' },
     { property: 'uf', label: 'UF', type: 'string' },
     { property: 'telefone', label: 'Telefone', type: 'string' },
     { property: 'email', label: 'E-mail', type: 'string' }

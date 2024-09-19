@@ -1,10 +1,18 @@
-import { Pessoas } from './../pessoas';
-import { CidadesService } from './../../cidade/cidades.service';
+import { PessoaComCidade } from './../PessoaComCidade';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PoBreadcrumb, PoSelectOption, PoTableColumn, PoModalAction, PoModalComponent, PoNotificationService } from '@po-ui/ng-components';
+import {
+  PoBreadcrumb,
+  PoModalAction,
+  PoModalComponent,
+  PoNotificationService,
+  PoSelectOption,
+  PoTableColumn,
+} from '@po-ui/ng-components';
+
 import { PessoasService } from '../pessoas.service';
-import { Cidades } from '../../cidade/cidades';
+import { CidadesService } from './../../cidade/cidades.service';
+import { Pessoas } from './../pessoas';
 
 @Component({
   selector: 'app-pessoas-list',
@@ -91,6 +99,7 @@ export class PessoasListComponent implements OnInit {
     { property: 'cpforcnpj', label: 'CPF/CNPJ', type: 'string' },
     { property: 'endereco', label: 'Endereço', type: 'string' },
     { property: 'numero', label: 'Número', type: 'string' },
+    { property: 'complemento', label: 'Complemento', type: 'string' },
     { property: 'bairro', label: 'Bairro', type: 'string' },
     { property: 'cep', label: 'CEP', type: 'string' },
     { property: 'cidadeNome', label: 'Cidade', type: 'string' },
@@ -120,6 +129,7 @@ export class PessoasListComponent implements OnInit {
       cpforcnpj: [''],
       endereco: [''],
       numero: [''],
+      complemento: [''],
       bairro: [''],
       cep: [''],
       cidadeId: [''],
@@ -134,7 +144,7 @@ export class PessoasListComponent implements OnInit {
       data => {
         this.optionsGroupList = data.map(cidade => ({
           label: cidade.nome,
-          value: cidade.id
+          value: cidade.cidade_Id
         }));
         this.listarPessoas();
       },
@@ -163,13 +173,21 @@ export class PessoasListComponent implements OnInit {
   }
 
   private searchItems(filter: any) {
-    this.service.listarPessoasFiltroPorNome(filter).subscribe(res => {
-      this.items = res.map(pessoa => ({
-        ...pessoa,
-        cidadeNome: this.optionsGroupList.find(cidade => cidade.value === pessoa.cidadeId)?.label || 'Cidade desconhecida'
-      }));
-    });
-  }
+    this.service.listarPessoasFiltroPorCpfOrCnpj(filter).subscribe(
+      res => {
+        const pessoas = Array.isArray(res) ? res : [res];
+
+        this.items = pessoas.map(pessoa => ({
+          ...pessoa,
+          cidadeNome: this.optionsGroupList.find(cidade => cidade.value === pessoa.cidadeId)?.label || 'Cidade desconhecida'
+        }));
+      },
+      error => {
+        console.error('Erro ao buscar pessoas:', error);
+      }
+  );
+}
+
 
   novaPessoa() {
     this.limparForm();
@@ -213,6 +231,7 @@ export class PessoasListComponent implements OnInit {
     pessoa.nome = this.form.get('nome')?.value;
     pessoa.uf = this.form.get('uf')?.value;
     pessoa.numero = this.form.get('numero')?.value;
+    pessoa.complemento = this.form.get('complemento')?.value;
     pessoa.telefone = this.form.get('telefone')?.value;
     pessoa.endereco = this.form.get('endereco')?.value;
 
@@ -241,6 +260,7 @@ export class PessoasListComponent implements OnInit {
     pessoa.cpforcnpj = this.form.get('cpforcnpj')?.value;
     pessoa.endereco = this.form.get('endereco')?.value;
     pessoa.numero = this.form.get('numero')?.value;
+    pessoa.complemento = this.form.get('complemento')?.value;
     pessoa.bairro = this.form.get('bairro')?.value;
     pessoa.cep = this.form.get('cep')?.value;
     pessoa.cidadeId = this.form.get('cidadeId')?.value;

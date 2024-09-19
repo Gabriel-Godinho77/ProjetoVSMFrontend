@@ -5,6 +5,7 @@ export class Pessoas{
   endereco!: string;
   numero!: string;
   bairro!: string;
+  complemento!:String;
   cep!: string;
   cidadeId!: number;
   uf!: string;

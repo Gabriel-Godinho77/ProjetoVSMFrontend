@@ -28,9 +28,10 @@ export class PessoasService {
     return this.http.delete<any>(environment.API_URL + `/pessoas/${idPessoa}`);
   }
 
-  listarPessoasFiltroPorNome(nome: string): Observable<Pessoas[]> {
-    // Construa a URL com o parâmetro de consulta
-    const params = new HttpParams().set('nome', nome);
-    return this.http.get<Pessoas[]>(`${environment.API_URL}/pessoas`, { params });
+  listarPessoasFiltroPorCpfOrCnpj(cpforcnpj: string): Observable<Pessoas[]> {
+    return this.http.get<Pessoas[]>(`${environment.API_URL}/pessoas/${cpforcnpj}`);
   }
+
+
+
 }

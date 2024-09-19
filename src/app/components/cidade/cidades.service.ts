@@ -19,12 +19,12 @@ export class CidadesService {
     return this.http.post<Cidades>(environment.API_URL + '/cidades', cidade);
   }
 
-  atualizar(idCidade: number, cidade: Cidades): Observable<any> {
-    return this.http.put<any>(environment.API_URL + `/cidades/${idCidade}`, cidade);
+  atualizar(cidade_Id: number, cidade: Cidades): Observable<any> {
+    return this.http.put<any>(environment.API_URL + `/cidades/${cidade_Id}`, cidade);
   }
 
-  deletar(idCidade: number): Observable<any> {
-    return this.http.delete<any>(environment.API_URL + `/cidades/${idCidade}`);
+  deletar(cidade_Id: number): Observable<any> {
+    return this.http.delete<any>(environment.API_URL + `/cidades/${cidade_Id}`);
   }
 
   listarCidadesFiltroPorNome(nome: string): Observable<Cidades[]> {

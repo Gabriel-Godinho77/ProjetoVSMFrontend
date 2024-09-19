@@ -16,7 +16,7 @@ export class CidadesListComponent implements OnInit {
 
   public readonly columns: Array<PoTableColumn> = [
     {
-      property: 'id',
+      property: 'cidade_Id',
       label: 'Código',
       type: 'string'
     },
@@ -142,14 +142,12 @@ export class CidadesListComponent implements OnInit {
   }
 
   excluirCidade() {
-    this.service.deletar(this.cidade.id).subscribe(
+    console.log(this.cidade.cidade_Id);
+    this.service.deletar(this.cidade.cidade_Id).subscribe(
       res => {
         this.poNotification.success('Cidade excluída com sucesso!');
         this.listarCidades();
       },
-      error => {
-        this.poNotification.error('Não foi possível excluir a cidade!');
-      }
     );
     this.modalExcluirCidade.close();
   }
@@ -191,7 +189,7 @@ export class CidadesListComponent implements OnInit {
     console.log(this.cidade);
     const cidade = new Cidades();
     cidade.nome = this.form.get("nome")?.value;
-    this.service.atualizar(this.cidade.id, cidade).subscribe(
+    this.service.atualizar(this.cidade.cidade_Id, cidade).subscribe(
       res => {
         this.cidade = res;
         this.poNotification.success('Cidade editada com sucesso!');
